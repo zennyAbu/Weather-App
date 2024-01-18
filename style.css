@@ -183,7 +183,7 @@ nav ul li a:hover:after {
   color: #fff;
   margin: 20px auto 0;
   border-radius: 20px;
-  padding: 10px 20px;
+  padding: 15px 20px;
 }
 
 .forecast img {
@@ -194,7 +194,6 @@ nav ul li a:hover:after {
   display: flex;
   justify-content: space-between;
   align-content: center;
-
   text-align: center;
 }
 
