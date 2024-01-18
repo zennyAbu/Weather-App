@@ -12,6 +12,7 @@ async function checkWeather(city) {
   if (response.status == 404) {
     document.querySelector(".error").style.display = "block";
     document.querySelector(".weather").style.display = "none";
+    document.querySelector(".forecast").style.display = "none";
   } else {
     let data = await response.json();
 
@@ -23,7 +24,16 @@ async function checkWeather(city) {
     document.querySelector(".humidity").innerHTML = data.main.humidity + "%";
     document.querySelector(".wind").innerHTML =
       Math.round(data.wind.speed) + " km/h";
+    let sunriseElement = document.querySelector(".sunrise");
+    let sunrisedate = new Date(data.sys.sunrise * 1000);
+    sunriseElement.innerHTML = `${sunrisedate.getHours()}:${sunrisedate.getMinutes()}`;
 
+    let sunsetElement = document.querySelector(".sunset");
+    let sunsetdate = new Date(data.sys.sunset * 1000);
+    sunsetElement.innerHTML = `${sunsetdate.getHours()}:${sunsetdate.getMinutes()}`;
+
+    document.querySelector(".max-temp").innerHTML =
+      Math.round(data.main.temp_max) + "℃";
     if (data.weather[0].main === "Clouds") {
       weatherIcon.src = "images-animated/cloudy.svg";
     } else if (data.weather[0].main === "Clear") {
@@ -43,6 +53,7 @@ async function checkWeather(city) {
     }
 
     document.querySelector(".weather").style.display = "block";
+    document.querySelector(".forecast").style.display = "block";
     document.querySelector(".error").style.display = "none";
   }
 }
@@ -50,3 +61,13 @@ async function checkWeather(city) {
 searchBtn.addEventListener("click", () => {
   checkWeather(searchBox.value);
 });
+
+let sidemeu = document.getElementById("sidemenu");
+
+function openMenu() {
+  sidemeu.style.right = "0";
+}
+
+function closeMenu() {
+  sidemeu.style.right = "-200px";
+}

@@ -9,6 +9,65 @@ body {
   background: #222;
 }
 
+.container {
+  padding: 10px 10%;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.logo {
+  width: 140px;
+}
+
+nav ul li {
+  display: inline-block;
+  list-style: none;
+  margin: 10px 20px;
+}
+
+nav ul li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+  text-transform: uppercase;
+  padding: 15px;
+}
+
+nav ul li a,
+nav ul li a:after,
+nav ul li a:before {
+  transition: all 0.5s;
+}
+
+nav ul li a:hover {
+  color: rgba(238, 174, 202, 1);
+}
+
+nav ul li a {
+  position: relative;
+}
+
+nav ul li a:after {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 0%;
+  content: ".";
+  color: transparent;
+  background: rgba(148, 187, 233, 1);
+  height: 1px;
+}
+nav ul li a:hover:after {
+  width: 100%;
+}
+
 .card {
   width: 90%;
   max-width: 470px;
@@ -18,9 +77,9 @@ body {
     rgba(148, 187, 233, 1) 100%
   );
   color: #fff;
-  margin: 100px auto 0;
+  margin: 30px auto 0;
   border-radius: 20px;
-  padding: 40px 35px;
+  padding: 20px 35px;
   text-align: center;
 }
 
@@ -54,8 +113,8 @@ body {
   cursor: pointer;
 }
 
-.search button img {
-  width: 16px;
+.search button i {
+  font-size: 20px;
 }
 
 .weather-icon {
@@ -78,7 +137,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 20px;
   margin-top: 50px;
 }
 
@@ -89,8 +147,7 @@ body {
 }
 
 .col img {
-  width: 40px;
-  margin-right: 10px;
+  width: 90px;
 }
 
 .humidity,
@@ -103,6 +160,10 @@ body {
   display: none;
 }
 
+.forecast {
+  display: none;
+}
+
 .error {
   text-align: left;
   margin-left: 10px;
@@ -111,8 +172,108 @@ body {
   display: none;
 }
 
-@media (max-width: 650px) {
+.forecast {
+  width: 90%;
+  max-width: 470px;
+  background: linear-gradient(
+    90deg,
+    rgba(238, 174, 202, 1) 0%,
+    rgba(148, 187, 233, 1) 100%
+  );
+  color: #fff;
+  margin: 20px auto 0;
+  border-radius: 20px;
+  padding: 10px 20px;
+}
+
+.forecast img {
+  width: 50%;
+}
+
+.forecast-dets {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+
+  text-align: center;
+}
+
+.footer {
+  width: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(238, 174, 202, 1) 0%,
+    rgba(148, 187, 233, 1) 100%
+  );
+  color: #fff;
+  margin: 40px auto 0;
+  padding: 10px;
+  bottom: 0;
+  left: 0;
+  position: fixed;
+  text-align: center;
+}
+
+.footer a {
+  text-decoration: none;
+  cursor: pointer;
+  color: purple;
+}
+
+.footer i {
+  color: rgb(246, 6, 6);
+}
+
+nav .fa-solid {
+  display: none;
+}
+
+@media only screen and (max-width: 600px) {
   .search input {
     width: 70%;
+  }
+
+  .col img {
+    width: 60px;
+  }
+
+  .humidity,
+  .wind {
+    font-size: 15px;
+    margin-top: -6px;
+  }
+
+  nav .fa-solid {
+    display: block;
+    font-size: 25px;
+    color: #fff;
+  }
+
+  nav ul {
+    background: linear-gradient(
+      90deg,
+      rgba(238, 174, 202, 1) 0%,
+      rgba(148, 187, 233, 1) 100%
+    );
+    position: fixed;
+    top: 0;
+    right: -200px;
+    width: 200px;
+    height: 100vh;
+    padding-top: 50px;
+    z-index: 2;
+    transition: right 0.5s;
+  }
+
+  nav ul li {
+    display: block;
+    margin: 25px;
+  }
+
+  nav ul .fa-solid {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    cursor: pointer;
   }
 }
