@@ -26,11 +26,11 @@ async function checkWeather(city) {
       Math.round(data.wind.speed) + " km/h";
     let sunriseElement = document.querySelector(".sunrise");
     let sunrisedate = new Date(data.sys.sunrise * 1000);
-    sunriseElement.innerHTML = `${sunrisedate.getHours()}:${sunrisedate.getMinutes()}`;
+    sunriseElement.innerHTML = `${sunrisedate.getHours()}:${sunrisedate.getMinutes()} AM`;
 
     let sunsetElement = document.querySelector(".sunset");
     let sunsetdate = new Date(data.sys.sunset * 1000);
-    sunsetElement.innerHTML = `${sunsetdate.getHours()}:${sunsetdate.getMinutes()}`;
+    sunsetElement.innerHTML = `${sunsetdate.getHours()}:${sunsetdate.getMinutes()} PM`;
 
     document.querySelector(".max-temp").innerHTML =
       Math.round(data.main.temp_max) + "℃";
